@@ -1,54 +1,69 @@
-# notakeout-api
+# notakeout-fullstack
 
-API em Flask desenvolvida como parte do MVP da disciplina de Desenvolvimento Full-Stack básico da pós-graduação em Desenvolvimento Full Stack administrada pela PUC-Rio.
+Aplicação fullstack desenvolvida como parte do MVP da disciplina de Desenvolvimento Front-End Avançado da pós-graduação em Desenvolvimento Full Stack da PUC-Rio.
 
-Este sistema tem como objetivo permitir o cadastro de alimentos e receitas, servir como base para criação de menus personalizados e gerar listas de compras em PDF.
+O sistema permite gerenciar alimentos, receitas, menus personalizados e gerar listas de compras, integrando uma API em Flask com um front-end moderno em React.
 
---- 
+---
 
 ## Tecnologias Usadas
 
-- **Python 3.11**
-- **Flask** – framework web para criação da API
-- **Flask SQLAlchemy** – ORM para banco de dados
-- **SQLite** – banco de dados leve e local
-- **Flasgger** – geração automática de documentação Swagger
-- **ReportLab** – geração de arquivos PDF (lista de compras)
-- **UV** – gerenciador de pacotes python
+### Backend
+- Python 3.11
+- Flask
+- Flask SQLAlchemy
+- SQLite
+- Flasgger (Swagger)
+- ReportLab (PDF)
+- UV (gerenciador de pacotes Python)
+
+### Frontend
+- React
+- Vite
+- React Router DOM
+- LocalStorage API
 
 ---
 
 ## Estrutura do Projeto
 
 ```
-notakeout-api/
+notakeout-fullstack/
 │
-├── app.py                 # Arquivo principal da aplicação
-├── requirements.txt       # Lista de dependências do projeto
-├── README.md              # Documentação do projeto
+├── backend/                 # API Flask
+│   ├── app.py
+│   ├── routes/
+│   ├── models/
+│   ├── schemas/
+│   ├── services/
+│   └── requirements.txt
 │
-├── models/                # Modelos de dados com SQLAlchemy
-├── routes/                # Rotas organizadas por blueprint
-├── schemas/               # Serialização para resposta JSON
-└── services/              # Lógica de negócio (lista de compras, PDF)
+├── frontend/                # SPA React
+│   ├── index.html
+│   └── src/
+│       ├── main.jsx
+│       ├── App.jsx
+│       ├── components/
+│       └── pages/
 ```
 
 ---
 
 ## Como rodar o projeto
 
-1. Clone o repositório:
+### Backend
+
+1. Acesse a pasta:
 
 ```bash
-git clone https://github.com/seu-usuario/notakeout-api.git
-cd notakeout-api
+cd backend
 ```
 
 2. Crie e ative o ambiente virtual com UV:
 
 ```bash
 uv venv
-.venv\Scripts\Activate
+.venv\Scripts\activate
 ```
 
 3. Instale as dependências:
@@ -63,39 +78,40 @@ uv pip install -r requirements.txt
 python app.py
 ```
 
-5. Acesse no navegador:
-
-```
-http://127.0.0.1:5000/
-
-```
+Acesse em `http://127.0.0.1:5000/`
 
 ---
 
-## Endpoints principais
+### Frontend
 
-### Alimentos `/foods`
-- `GET /foods`
-- `POST /foods`
-- `GET /foods/{id}`
-- `PUT /foods/{id}`
-- `DELETE /foods/{id}`
+1. Acesse a pasta:
 
-### Receitas `/recipes`
-- `POST /recipes`
-- `GET /recipes`
-- `GET /recipes/{id}`
-- `PUT /recipes/{id}`
+```bash
+cd frontend
+```
 
-### Menus `/menus`
-- `POST /menus`
-- `GET /menus`
-- `GET /menus/{id}`
-- `DELETE /menus/{id}`
+2. Instale as dependências:
 
-### Menus - Lista de Compras
-- `GET /menus/{id}/shopping-list` – retorna a lista em JSON
-- `GET /menus/{id}/pdf` – gera e baixa a lista em PDF
+```bash
+npm install
+```
+
+3. Inicie a aplicação:
+
+```bash
+npm run dev
+```
+
+Acesse em `http://127.0.0.1:5173/`
+
+---
+
+## API Pública Utilizada
+
+- Nome: OpenFoodFacts API
+- Licença: Open Database License (ODBL)
+- API key: Não requerida
+- Rotas utilizadas: busca de produtos por nome e código de barras
 
 ---
 
@@ -109,13 +125,14 @@ http://127.0.0.1:5000/apidocs/
 
 ---
 
-## Status do projeto
+## Status do Projeto
 
-- Estrutura organizada em `routes/`, `models/`, `schemas/` e `services/`
-- Próximo passo: desenvolvimento da interface front-end
+- Estrutura organizada com separação de front e back
+- SPA funcional com React Router
+- Integração futura com Docker, PostgreSQL, testes automatizados e CI/CD
 
 ---
 
 ## Autoria
 
-Desenvolvido por **Joanita Santiago** como parte do desafio final da disciplina de Desenvolvimento Full Stack Básico – Pós-graduação PUC-Rio Digital.
+Desenvolvido por **Joanita Santiago** como parte do desafio final da disciplina de Desenvolvimento Front-end Avançado – Pós-graduação PUC-Rio Digital.

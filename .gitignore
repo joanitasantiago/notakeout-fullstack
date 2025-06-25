@@ -1,98 +1,79 @@
-# Ambiente virtual Python
-.venv/
-env/
-ENV/
-venv/
-pip-log.txt
-pip-delete-this-directory.txt
+# === Backend - Python / Flask ===
+backend/.venv/
+backend/env/
+backend/ENV/
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
+backend/*.sqlite3
+backend/*.db
+backend/instance/
+backend/.env
 
-# Banco de dados local do Flask
-instance/
-*.sqlite3
-*.db
+# === Frontend - Node / React ===
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.env
+frontend/.env.*
+frontend/.cache/
+frontend/*.local
+frontend/coverage/
+frontend/.nyc_output/
+frontend/.eslintcache
+frontend/*.map
 
-# Arquivos do sistema
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
+# === Docker ===
+docker-compose.override.yml
+.docker/
+**/.dockerignore
+**/Dockerfile*
+*.pid
+tmp/
+volumes/
+**/volumes/
+**/tmp/
+*.tar
+*.sock
+
+# === Testes ===
+.tox/
+.pytest_cache/
+.cache/
+.coverage
+junit.xml
+
+# === IDEs e editores ===
+.vscode/
+!.vscode/extensions.json
+.idea/
+
+# === Sistema operacional ===
 .DS_Store
 Thumbs.db
 ehthumbs.db
 Icon?
 Desktop.ini
 
-# Configs do VS Code
-.vscode/
-!.vscode/extensions.json
-
-# PyCharm/JetBrains
-.idea/
-
-# Visual Studio
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# Logs
+# === Logs e arquivos temporários ===
 logs/
 *.log
+*.log.*
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
-
-# Node.js
-node_modules/
-dist/
-dist-ssr/
-*.local
-coverage/
-.nyc_output/
-build/
-tmp/
-temp/
-
-# Testes
-.coverage
-.tox/
-.pytest_cache/
-.cache/
-junit.xml
-
-# Arquivos de lock
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-poetry.lock
-Pipfile.lock
-
-# Diretórios e arquivos temporários
-.dir-to-text/
-.dttc/
-*.dttc
-.dttcignore
-
-# Outros
-*.env
-.env.*
-.envrc
+*.tmp
 *.bak
 *.orig
 *.rej
 *.swp
 *.swo
-*.tmp
-*.log.*
 
-# Front-end
-*.map
-.cache/
-.next/
-out/
-.sass-cache/
-.eslintcache
-bower_components/
+# === Lockfiles (descomente se quiser versionar)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+poetry.lock
+Pipfile.lock
