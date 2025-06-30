@@ -11,6 +11,7 @@ backend/*.sqlite3
 backend/*.db
 backend/instance/
 backend/.env
+backend/.env.*
 
 # === Frontend - Node / React ===
 frontend/node_modules/
