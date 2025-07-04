@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 
+import TitleManager from './components/titleManager';
 import Navbar from './components/Navbar';
 
 //HOMEPAGE
@@ -33,6 +34,7 @@ import NotFound from './pages/NotFound';
 function App() {
   return (
     <BrowserRouter>
+      <TitleManager />
       <Navbar />
       <Routes>
         {/* HOME */}
