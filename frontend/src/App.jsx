@@ -1,36 +1,69 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
+
+import Navbar from './components/Navbar';
+
+//HOMEPAGE
 import HomePage from './pages/HomePage';
-import FoodsPage from './pages/Foods/FoodsPage';
-import FoodsList from './pages/Foods/FoodsList';
-import FoodsForm from './pages/Foods/FoodsForm';
-import RecipesPage from './pages/Recipes/RecipesPage';
-import RecipesList from './pages/Recipes/RecipesList';
-import RecipesForm from './pages/Recipes/RecipesForm';
-import MenusPage from './pages/Menus/MenusPage';
-import MenusList from './pages/Menus/MenusList';
-import MenusForm from './pages/Menus/MenusForm';
-import ShoppingListPage from './pages/ShoppingListPage';
+
+// FOODS
+import FoodsPage from './pages/foods/FoodsPage';
+import FoodsList from './pages/foods/FoodsList';
+import FoodsForm from './pages/foods/FoodsForm';
+import FoodsEditForm from './pages/Foods/FoodsEditForm';
+
+// RECIPES
+import RecipesPage from './pages/recipes/RecipesPage';
+import RecipesList from './pages/recipes/RecipesList';
+import RecipesForm from './pages/recipes/RecipesForm';
+import RecipesEditForm from './pages/recipes/RecipesEditForm';
+
+//MENUS
+import MenusPage from './pages/menus/MenusPage';
+import MenusForm from './pages/menus/MenusForm';
+import MenusList from './pages/menus/MenusList';
+import MenusEditForm from './pages/menus/MenusEditForm';
+
+//SHOPPING-LIST
+import ShoppingListPage from './pages/shoppinglist/ShoppingListPage';
+
+//NOTFOUND
 import NotFound from './pages/NotFound';
 
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        {/* HOME */}
+        <Route path="home" element={<HomePage />} />
+        <Route path="/" element={<Navigate to="home" />} />
+
+        {/* FOODS */}
         <Route path="/foods" element={<FoodsPage />}>
           <Route index element={<FoodsList />} />
-          <Route path="new-food" element={<FoodsForm />} />
+          <Route path="new" element={<FoodsForm />} />
+          <Route path=":id/edit" element={<FoodsEditForm />} />
         </Route>
+
+        {/* RECIPES */}
         <Route path="/recipes" element={<RecipesPage />}>
           <Route index element={<RecipesList />} />
-          <Route path="new-recipe" element={<RecipesForm />} />
+          <Route path="new" element={<RecipesForm />} />
+          <Route path=":id/edit" element={<RecipesEditForm />} />
         </Route>
+
+        {/* MENUS */}
         <Route path="/menus" element={<MenusPage />}>
           <Route index element={<MenusList />} />
-          <Route path="new-menu" element={<MenusForm />} />
+          <Route path="new" element={<MenusForm />} />
+          <Route path=":id/edit" element={<MenusEditForm />} />
         </Route>
+
+        {/* SHOPPING-LIST */}
         <Route path="/shopping-list" element={<ShoppingListPage />} />
+
+        {/* NOTFOUND */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

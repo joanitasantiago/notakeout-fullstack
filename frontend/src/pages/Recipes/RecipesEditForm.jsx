@@ -1,19 +1,19 @@
 import { useNavigate } from 'react-router-dom';
 
-function MenusForm() {
+function RecipesEditForm() {
   const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
-    navigate('/menus');
+    navigate('/recipes');
   }
 
   return (
     <div>
-      <h3>Cadastrar novo Menu</h3>
+      <h3>Editar Receita ~nome~ </h3>
       <form onSubmit={handleSubmit}>
-        <button type="submit"> Salvar </button>
-        <button type="button" onClick={() => navigate('/menus')}>
+        <button type="submit"> Salvar alterações </button>
+        <button type="button" onClick={() => navigate('/recipes')}>
           Cancelar
         </button>
       </form>
@@ -21,4 +21,4 @@ function MenusForm() {
   );
 }
 
-export default MenusForm;
+export default RecipesEditForm;

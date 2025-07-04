@@ -1,8 +1,9 @@
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { createFood } from '../../services/foods/foods';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { getFood, updateFood } from '../../services/foods/foods';
 
-function FoodsForm() {
+function FoodsEditForm() {
+  const { id } = useParams();
   const navigate = useNavigate();
   const [food, setFood] = useState({
     name: '',
@@ -10,6 +11,15 @@ function FoodsForm() {
     in_stock: false,
     unit: '',
   });
+
+  useEffect(() => {
+    getFood(id)
+      .then((data) => setFood(data))
+      .catch(() => {
+        alert('Alimento não encontrado');
+        navigate('/foods');
+      });
+  }, [id, navigate]);
 
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
@@ -22,17 +32,17 @@ function FoodsForm() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      await createFood(food);
+      await updateFood(id, food);
       navigate('/foods');
     } catch (err) {
       console.error(err);
-      alert('Erro ao cadastrar.');
+      alert('Erro ao salvar.');
     }
   }
 
   return (
     <form onSubmit={handleSubmit} className="form-box">
-      <h3>Cadastrar novo alimento</h3>
+      <h3>Editar alimento - {food.name || '...'}</h3>
 
       <label htmlFor="name">Nome</label>
       <input
@@ -87,4 +97,4 @@ function FoodsForm() {
   );
 }
 
-export default FoodsForm;
+export default FoodsEditForm;

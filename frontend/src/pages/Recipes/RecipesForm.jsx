@@ -5,17 +5,19 @@ function RecipesForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    console.log('Receita cadastrada!');
-
     navigate('/recipes');
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
       <h3>Cadastrar nova receita</h3>
-      <button type="submit">Cadastrar</button>
-    </form>
+      <form onSubmit={handleSubmit}>
+        <button type="submit"> Salvar </button>
+        <button type="button" onClick={() => navigate('/recipes')}>
+          Cancelar
+        </button>
+      </form>
+    </div>
   );
 }
 

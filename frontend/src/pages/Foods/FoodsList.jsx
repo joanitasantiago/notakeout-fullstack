@@ -1,5 +1,16 @@
+import { useNavigate } from 'react-router-dom';
+
 function FoodsList() {
-  return <p>📋 Aqui será a lista de alimentos</p>;
+  const navigate = useNavigate();
+
+  return (
+    <div>
+      <h3> Lista de Alimentos </h3>
+      <button type="button" onClick={() => navigate('/foods/new')}>
+        + Adicionar alimento
+      </button>
+    </div>
+  );
 }
 
 export default FoodsList;

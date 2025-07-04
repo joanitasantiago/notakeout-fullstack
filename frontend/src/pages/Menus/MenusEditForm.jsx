@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-function MenusForm() {
+function MenusEditForm() {
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -10,9 +10,9 @@ function MenusForm() {
 
   return (
     <div>
-      <h3>Cadastrar novo Menu</h3>
+      <h3>Editar Menu x</h3>
       <form onSubmit={handleSubmit}>
-        <button type="submit"> Salvar </button>
+        <button type="submit"> Salvar alterações </button>
         <button type="button" onClick={() => navigate('/menus')}>
           Cancelar
         </button>
@@ -21,4 +21,4 @@ function MenusForm() {
   );
 }
 
-export default MenusForm;
+export default MenusEditForm;
