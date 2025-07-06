@@ -6,7 +6,7 @@ O sistema permite gerenciar alimentos, receitas, menus personalizados e gerar li
 
 ---
 
-## Tecnologias Usadas
+## Tecnologias Utilizadas
 
 ### Backend
 - Python 3.11
@@ -23,113 +23,126 @@ O sistema permite gerenciar alimentos, receitas, menus personalizados e gerar li
 - React Router DOM
 - LocalStorage API
 
+### DevOps
+- Docker
+- Docker Compose
+
 ---
 
 ## Estrutura do Projeto
 
 ```
 notakeout-fullstack/
-│
-├── backend/                 # API Flask
+├── backend/              # Aplicação Flask
 │   ├── app.py
 │   ├── routes/
-│   ├── models/
-│   ├── schemas/
 │   ├── services/
+│   ├── schemas/
+│   ├── models/
+│   ├── tests/
 │   └── requirements.txt
-│
-├── frontend/                # SPA React
-│   ├── index.html
-│   └── src/
-│       ├── main.jsx
-│       ├── App.jsx
-│       ├── components/
-│       └── pages/
+├── frontend/             # Aplicação React
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   └── App.jsx
+│   └── vite.config.js
+├── docker-compose.yml
+└── README.md
 ```
 
 ---
 
 ## Como rodar o projeto
 
-### Backend
+### Opção 1: Com Docker
 
-1. Acesse a pasta:
+#### 1. Instale Docker e Docker Compose
 
+- Baixe o [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- Após instalar, verifique se tudo está funcionando:
+
+```bash
+docker --version
+docker compose version
+```
+
+#### 2. Clone o repositório
+
+```bash
+git clone https://github.com/joanitasantiago/notakeout-fullstack.git
+cd notakeout-fullstack
+```
+
+#### 3. Suba os serviços com Docker Compose
+
+```bash
+docker compose up --build
+```
+
+#### 4. Acesse a aplicação
+
+- Front-end: [http://localhost:5173](http://localhost:5173) (modo desenvolvimento) ou [http://localhost:80](http://localhost:80) (produção)
+- Back-end (API): [http://localhost:5000](http://localhost:5000)
+
+> **Atenção:**  
+> Durante o desenvolvimento, o projeto utiliza `docker-compose.override.yml` para habilitar hot reload tanto no Flask quanto no React.  
+> Lembre-se de configurar as variáveis de ambiente copiando `.env.example` para `.env` em cada serviço.
+
+---
+
+### Opção 2: Sem Docker
+
+#### 1. Rodando o Backend (Flask)
+
+**Pré-requisitos:**
+- Python 3.10+
+- [uv](https://github.com/astral-sh/uv) (ou venv/pip)
+
+**Passos:**
 ```bash
 cd backend
-```
-
-2. Crie e ative o ambiente virtual com UV:
-
-```bash
 uv venv
-.venv\Scripts\activate
-```
-
-3. Instale as dependências:
-
-```bash
 uv pip install -r requirements.txt
-```
-
-4. Inicie a aplicação:
-
-```bash
+cp .env.example .env
 python app.py
 ```
-
-Acesse em `http://127.0.0.1:5000/`
+A API estará disponível em: [http://localhost:5000](http://localhost:5000)
 
 ---
 
-### Frontend
+#### 2. Rodando o Frontend (React + Vite)
 
-1. Acesse a pasta:
+**Pré-requisitos:**
+- Node.js 18+
+- npm ou [pnpm](https://pnpm.io/)
 
+**Passos:**
 ```bash
 cd frontend
-```
-
-2. Instale as dependências:
-
-```bash
 npm install
-```
-
-3. Inicie a aplicação:
-
-```bash
+cp .env.example .env
 npm run dev
 ```
-
-Acesse em `http://127.0.0.1:5173/`
-
----
-
-## API Pública Utilizada
-
-- Nome: OpenFoodFacts API
-- Licença: Open Database License (ODBL)
-- API key: Não requerida
-- Rotas utilizadas: busca de produtos por nome e código de barras
+A aplicação estará disponível em: [http://localhost:5173](http://localhost:5173)
 
 ---
 
 ## Documentação Swagger
 
-Disponível em:
+A documentação da API está disponível em:
 
-```
-http://127.0.0.1:5000/apidocs/
-```
+[http://127.0.0.1:5000/apidocs/](http://127.0.0.1:5000/apidocs/)
 
 ---
 
-## Status do Projeto
+## Em breve
 
-- Estrutura organizada com separação de front e back
-- SPA funcional com React Router
-- Integração futura com Docker, PostgreSQL, testes automatizados e CI/CD
+- **Frontend:** Menus, Lista de Compras, testes
+- **Backend:** Migração para PostgreSQL, testes
+- **DevOps:** GitHub Actions com CI/CD
 
 ---
 
