@@ -13,6 +13,12 @@ export async function createFood(newFoodData) {
   return res.json();
 }
 
+export async function getAllFoods() {
+  const res = await fetch(`${BASE_URL}/foods`);
+  if (!res.ok) throw new Error('Erro ao carregar alimentos');
+  return res.json();
+}
+
 export async function getFood(id) {
   const res = await fetch(`${BASE_URL}/foods/${id}`);
   if (!res.ok) throw new Error('Erro ao buscar alimento');
@@ -32,9 +38,9 @@ export async function updateFood(id, updatedData) {
 }
 
 export async function deleteFood(id) {
-    const res = await fetch (`${BASE_URL}/foods/${id}`, {
-        method: "DELETE",
-    });
-    if (!res.ok) throw new Error("Erro ao excluir alimento");
-    return true;
+  const res = await fetch(`${BASE_URL}/foods/${id}`, {
+    method: 'DELETE',
+  });
+  if (!res.ok) throw new Error('Erro ao excluir alimento');
+  return true;
 }

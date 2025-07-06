@@ -80,10 +80,3 @@ pnpm-debug.log*
 *.rej
 *.swp
 *.swo
-
-# === Lockfiles
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-poetry.lock
-Pipfile.lock

@@ -1,0 +1,78 @@
+:root {
+    --btn-default-bg: #fcd5ce;
+    --btn-default-hover: #fbb1a8;
+
+    --btn-danger-bg: #d62828;
+    --btn-danger-hover: #a11212;
+
+    --btn-success-bg: #80ed99;
+    --btn-success-hover: #66cc88;
+
+    --btn-info-bg: #003049;
+    --btn-info-hover: #002438;
+
+    --btn-text: #fff;
+}
+
+/* Base */
+.btn {
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Tamanhos */
+.btn-medium {
+    font-size: 1rem;
+}
+
+.btn-small {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.75rem;
+}
+
+/* Variantes visuais */
+.btn-default {
+    background-color: var(--btn-default-bg);
+    color: black;
+}
+
+.btn-default:hover {
+    background-color: var(--btn-default-hover);
+}
+
+.btn-danger {
+    background-color: var(--btn-danger-bg);
+    color: var(--btn-text);
+}
+
+.btn-danger:hover {
+    background-color: var(--btn-danger-hover);
+}
+
+.btn-success {
+    background-color: var(--btn-success-bg);
+    color: black;
+}
+
+.btn-success:hover {
+    background-color: var(--btn-success-hover);
+}
+
+.btn-info {
+    background-color: var(--btn-info-bg);
+    color: var(--btn-text);
+}
+
+.btn-info:hover {
+    background-color: var(--btn-info-hover);
+}
+
+/* Estado desabilitado */
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { createFood } from '../../services/foods/foods';
+import Alert from '../../components/Alert';
 
 function FoodsForm() {
   const navigate = useNavigate();
