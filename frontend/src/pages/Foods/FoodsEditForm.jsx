@@ -40,7 +40,7 @@ function FoodsEditForm() {
       showAlert('Alimento alterado com sucesso', 'success');
       setTimeout(() => {
         navigate('/foods');
-      }, 2000);
+      }, 1000);
     } catch (err) {
       console.error(err);
       showAlert('Erro ao salvar.', 'danger');

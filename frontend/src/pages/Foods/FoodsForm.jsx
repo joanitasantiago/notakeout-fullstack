@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { createFood } from '../../services/foods/foods';
-import Alert from '../../components/Alert';
+import useAlert from '../../hooks/useAlert';
 
 function FoodsForm() {
   const navigate = useNavigate();
+  const { alert, showAlert } = useAlert();
   const [food, setFood] = useState({
     name: '',
     category: '',
@@ -24,67 +25,73 @@ function FoodsForm() {
     e.preventDefault();
     try {
       await createFood(food);
-      navigate('/foods');
+      showAlert('Alimento criado com sucesso!', 'success');
+      setTimeout(() => {
+        navigate('/foods');
+      }, 1000);
     } catch (err) {
       console.error(err);
-      alert('Erro ao cadastrar.');
+      showAlert('Erro ao cadastrar.', 'danger');
     }
   }
 
   return (
-    <form onSubmit={handleSubmit} className="form-box">
-      <h3>Cadastrar novo alimento</h3>
+    <>
+      {alert}
+      <form onSubmit={handleSubmit} className="form-box">
+        <h3>Cadastrar novo alimento</h3>
 
-      <label htmlFor="name">Nome</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        value={food.name}
-        onChange={handleChange}
-        required
-      />
-
-      <label htmlFor="category">Categoria</label>
-      <input
-        type="text"
-        id="category"
-        name="category"
-        value={food.category}
-        onChange={handleChange}
-      />
-
-      <label>
+        <label htmlFor="name">Nome</label>
         <input
-          type="checkbox"
-          name="in_stock"
-          checked={food.in_stock}
+          type="text"
+          id="name"
+          name="name"
+          value={food.name}
+          onChange={handleChange}
+          required
+        />
+
+        <label htmlFor="category">Categoria</label>
+        <input
+          type="text"
+          id="category"
+          name="category"
+          value={food.category}
           onChange={handleChange}
         />
-        Em estoque?
-      </label>
 
-      <label htmlFor="unit">Unidade</label>
-      <input
-        type="text"
-        id="unit"
-        name="unit"
-        value={food.unit}
-        placeholder="ex: kg, unidade"
-        onChange={handleChange}
-      />
+        <label>
+          <input
+            type="checkbox"
+            name="in_stock"
+            checked={food.in_stock}
+            onChange={handleChange}
+          />
+          Em estoque?
+        </label>
 
-      <button type="submit" className="form-btn">
-        Salvar
-      </button>
-      <button
-        type="button"
-        className="form-btn"
-        onClick={() => navigate('/foods')}
-      >
-        Cancelar
-      </button>
-    </form>
+        <label htmlFor="unit">Unidade</label>
+        <input
+          type="text"
+          id="unit"
+          name="unit"
+          value={food.unit}
+          placeholder="ex: kg, unidade"
+          onChange={handleChange}
+        />
+
+        <button type="submit" className="form-btn">
+          Salvar
+        </button>
+        <button
+          type="button"
+          className="form-btn"
+          onClick={() => navigate('/foods')}
+        >
+          Cancelar
+        </button>
+      </form>
+    </>
   );
 }
 
