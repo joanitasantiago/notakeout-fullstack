@@ -1,63 +1,73 @@
 # === Backend - Python / Flask ===
+# Ignore local virtual environments
 backend/.venv/
 backend/env/
 backend/ENV/
 backend/venv/
+
+# Python bytecode and caches
 backend/__pycache__/
-backend/*.pyc
+backend/*.py[cod]
 backend/*.pyo
 backend/*.pyd
+
+# SQLite and local database files
 backend/*.sqlite3
 backend/*.db
+
+# Flask instance folder
 backend/instance/
+
+# Environment files
 backend/.env
+backend/.env.*
 
 # === Frontend - Node / React ===
+# Node dependencies and build output
 frontend/node_modules/
 frontend/dist/
 frontend/build/
+
+# Local environment files
 frontend/.env
 frontend/.env.*
+
+# Caches and temporary files
 frontend/.cache/
-frontend/*.local
+frontend/.eslintcache
 frontend/coverage/
 frontend/.nyc_output/
-frontend/.eslintcache
+frontend/*.local
 frontend/*.map
 
-# === Docker ===
-docker-compose.override.yml
+# === Docker related files
 .docker/
-**/.dockerignore
-**/Dockerfile*
-*.pid
 tmp/
 volumes/
-**/volumes/
-**/tmp/
-*.tar
+*.pid
 *.sock
+*.tar
 
-# === Testes ===
+# === Testing and coverage
 .tox/
 .pytest_cache/
 .cache/
 .coverage
 junit.xml
 
-# === IDEs e editores ===
+# === IDEs and editors
 .vscode/
 !.vscode/extensions.json
 .idea/
 
-# === Sistema operacional ===
+# === OS-specific system files
 .DS_Store
 Thumbs.db
 ehthumbs.db
 Icon?
 Desktop.ini
 
-# === Logs e arquivos temporários ===
+# === Logs and temporary files
 logs/
 *.log
 *.log.*
@@ -70,10 +80,3 @@ pnpm-debug.log*
 *.rej
 *.swp
 *.swo
-
-# === Lockfiles (descomente se quiser versionar)
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-poetry.lock
-Pipfile.lock

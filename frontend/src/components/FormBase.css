@@ -1,0 +1,59 @@
+:root {
+    --form-bg: #F5CAC3;
+    --form-title-color: #13171a;
+    --form-label-color: #13171a;
+    --form-input-bg: #eee5d5;
+    --form-input-text: #13171a;
+    --form-placeholder: #8c99aa;
+    --form-checkbox-color: #f0706e;
+}
+
+.form-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--form-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    width: 600px;
+    gap: 20px;
+}
+
+.form-box h3 {
+    font-size: 1.5rem;
+    color: var(--form-title-color);
+    margin-bottom: 10px;
+}
+
+.form-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.form-input-group label {
+    font-weight: 600;
+    color: var(--form-label-color);
+}
+
+.form-input-group input[type="text"],
+.form-input-group input[type="number"],
+.form-input-group input[type="email"],
+.form-input-group input[type="password"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--form-input-bg);
+    color: var(--form-input-text);
+}
+
+.form-input-group input::placeholder {
+    color: var(--form-placeholder);
+}
+
+.form-input-group input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: var(--form-checkbox-color);
+}
