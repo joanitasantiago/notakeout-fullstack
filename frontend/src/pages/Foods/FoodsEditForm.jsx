@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getFood, updateFood } from '../../services/foods/foods';
+import { getFood, updateFood } from '../../services/foods';
 import useAlert from '../../hooks/useAlert';
 import FormBase from '../../components/FormBase';
 

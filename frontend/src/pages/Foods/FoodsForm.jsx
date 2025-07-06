@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { createFood } from '../../services/foods/foods';
+import { createFood } from '../../services/foods';
 import useAlert from '../../hooks/useAlert';
 import FormBase from '../../components/FormBase';
 
