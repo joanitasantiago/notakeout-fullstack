@@ -2,6 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getFood, updateFood } from '../../services/foods/foods';
 import useAlert from '../../hooks/useAlert';
+import FormBase from '../../components/FormBase';
 
 function FoodsEditForm() {
   const { alert, showAlert } = useAlert();
@@ -40,7 +41,7 @@ function FoodsEditForm() {
       showAlert('Alimento alterado com sucesso', 'success');
       setTimeout(() => {
         navigate('/foods');
-      }, 1000);
+      }, 1500);
     } catch (err) {
       console.error(err);
       showAlert('Erro ao salvar.', 'danger');
@@ -50,59 +51,19 @@ function FoodsEditForm() {
   return (
     <>
       {alert}
-      <form onSubmit={handleSubmit} className="form-box">
-        <h3>Editar alimento - {food.name || '...'}</h3>
-
-        <label htmlFor="name">Nome</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={food.name}
-          onChange={handleChange}
-          required
-        />
-
-        <label htmlFor="category">Categoria</label>
-        <input
-          type="text"
-          id="category"
-          name="category"
-          value={food.category}
-          onChange={handleChange}
-        />
-
-        <label>
-          <input
-            type="checkbox"
-            name="in_stock"
-            checked={food.in_stock}
-            onChange={handleChange}
-          />
-          Em estoque?
-        </label>
-
-        <label htmlFor="unit">Unidade</label>
-        <input
-          type="text"
-          id="unit"
-          name="unit"
-          value={food.unit}
-          placeholder="ex: kg, unidade"
-          onChange={handleChange}
-        />
-
-        <button type="submit" className="form-btn">
-          Salvar
-        </button>
-        <button
-          type="button"
-          className="form-btn"
-          onClick={() => navigate('/foods')}
-        >
-          Cancelar
-        </button>
-      </form>
+      <FormBase
+        title={`Editar alimento - ${food.name || '...'}`}
+        values={food}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+        onCancel={() => navigate('/foods')}
+        fields={[
+          { name: 'name', label: 'Nome', required: true },
+          { name: 'category', label: 'Categoria' },
+          { name: 'in_stock', label: 'Em estoque?', type: 'checkbox' },
+          { name: 'unit', label: 'Unidade', placeholder: 'ex: kg, unidade' },
+        ]}
+      />
     </>
   );
 }

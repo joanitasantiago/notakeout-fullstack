@@ -1,12 +1,12 @@
 :root {
-    --btn-default-bg: #fcd5ce;
-    --btn-default-hover: #fbb1a8;
+    --btn-default-bg: #F28482;
+    --btn-default-hover: #f0706e;
 
-    --btn-danger-bg: #d62828;
-    --btn-danger-hover: #a11212;
+    --btn-danger-bg: #d67480;
+    --btn-danger-hover: #d25a68;
 
-    --btn-success-bg: #80ed99;
-    --btn-success-hover: #66cc88;
+    --btn-success-bg: #2EC4B6;
+    --btn-success-hover: #1b9488;
 
     --btn-info-bg: #003049;
     --btn-info-hover: #002438;
@@ -22,6 +22,7 @@
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    color: var(--btn-text);
 }
 
 /* Tamanhos */
@@ -37,7 +38,6 @@
 /* Variantes visuais */
 .btn-default {
     background-color: var(--btn-default-bg);
-    color: black;
 }
 
 .btn-default:hover {
@@ -46,7 +46,6 @@
 
 .btn-danger {
     background-color: var(--btn-danger-bg);
-    color: var(--btn-text);
 }
 
 .btn-danger:hover {
@@ -55,7 +54,6 @@
 
 .btn-success {
     background-color: var(--btn-success-bg);
-    color: black;
 }
 
 .btn-success:hover {
@@ -64,7 +62,6 @@
 
 .btn-info {
     background-color: var(--btn-info-bg);
-    color: var(--btn-text);
 }
 
 .btn-info:hover {
