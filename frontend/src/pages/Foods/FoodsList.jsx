@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Card from '../../components/Card';
-import { getAllFoods } from '../../services/foods/foods';
-import { deleteFood } from '../../services/foods/foods';
+import { getAllFoods, deleteFood } from '../../services/foods';
 import useAlert from '../../hooks/useAlert';
 import { useNavigate } from 'react-router-dom';
 

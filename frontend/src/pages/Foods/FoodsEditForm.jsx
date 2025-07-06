@@ -1,12 +1,13 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getFood, updateFood } from '../../services/foods/foods';
+import { getFood, updateFood } from '../../services/foods';
 import useAlert from '../../hooks/useAlert';
 import FormBase from '../../components/FormBase';
 
 function FoodsEditForm() {
   const { alert, showAlert } = useAlert();
   const { id } = useParams();
+  const localStorageKey = `draft_food_edit_${id}`;
   const navigate = useNavigate();
   const [food, setFood] = useState({
     name: '',
@@ -14,17 +15,33 @@ function FoodsEditForm() {
     in_stock: false,
     unit: '',
   });
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getFood(id)
-      .then((data) => setFood(data))
-      .catch(() => {
-        showAlert('Alimento não encontrado', 'danger');
-        setTimeout(() => {
-          navigate('/foods');
-        }, 2000);
-      });
+    const draft = localStorage.getItem(localStorageKey);
+    if (draft) {
+      setFood(JSON.parse(draft));
+      setIsLoading(false);
+    } else {
+      getFood(id)
+        .then((data) => {
+          setFood(data);
+          setIsLoading(false);
+        })
+        .catch(() => {
+          showAlert('Alimento não encontrado', 'danger');
+          setTimeout(() => {
+            navigate('/foods');
+          }, 2000);
+        });
+    }
   }, [id, navigate]);
+
+  useEffect(() => {
+    if (!isLoading) {
+      localStorage.setItem(localStorageKey, JSON.stringify(food));
+    }
+  }, [food, isLoading]);
 
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
@@ -38,6 +55,7 @@ function FoodsEditForm() {
     e.preventDefault();
     try {
       await updateFood(id, food);
+      localStorage.removeItem(localStorageKey);
       showAlert('Alimento alterado com sucesso', 'success');
       setTimeout(() => {
         navigate('/foods');
@@ -48,6 +66,8 @@ function FoodsEditForm() {
     }
   }
 
+  if (isLoading) return <p>Carregando...</p>;
+
   return (
     <>
       {alert}
@@ -56,7 +76,10 @@ function FoodsEditForm() {
         values={food}
         onChange={handleChange}
         onSubmit={handleSubmit}
-        onCancel={() => navigate('/foods')}
+        onCancel={() => {
+          localStorage.removeItem(localStorageKey);
+          navigate('/foods');
+        }}
         fields={[
           { name: 'name', label: 'Nome', required: true },
           { name: 'category', label: 'Categoria' },

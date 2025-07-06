@@ -1,18 +1,22 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { createFood } from '../../services/foods/foods';
+import { useEffect, useState } from 'react';
+import { createFood } from '../../services/foods';
 import useAlert from '../../hooks/useAlert';
 import FormBase from '../../components/FormBase';
 
 function FoodsForm() {
   const navigate = useNavigate();
   const { alert, showAlert } = useAlert();
-  const [food, setFood] = useState({
-    name: '',
-    category: '',
-    in_stock: false,
-    unit: '',
+  const [food, setFood] = useState(() => {
+    const saved = localStorage.getItem('draft_food');
+    return saved
+      ? JSON.parse(saved)
+      : { name: '', category: '', in_stock: false, unit: '' };
   });
+
+  useEffect(() => {
+    localStorage.setItem('draft_food', JSON.stringify(food));
+  }, [food]);
 
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
@@ -26,6 +30,7 @@ function FoodsForm() {
     e.preventDefault();
     try {
       await createFood(food);
+      localStorage.removeItem('draft_food');
       showAlert('Alimento criado com sucesso!', 'success');
       setTimeout(() => {
         navigate('/foods');
@@ -44,7 +49,10 @@ function FoodsForm() {
         values={food}
         onChange={handleChange}
         onSubmit={handleSubmit}
-        onCancel={() => navigate('/foods')}
+        onCancel={() => {
+          localStorage.removeItem('draft_food');
+          navigate('/foods');
+        }}
         fields={[
           { name: 'name', label: 'Nome', required: true },
           { name: 'category', label: 'Categoria' },
