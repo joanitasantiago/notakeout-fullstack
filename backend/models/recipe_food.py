@@ -13,7 +13,7 @@ class RecipeFood(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     recipe_id = db.Column(db.Integer, db.ForeignKey("recipe.id"), nullable=False)
-    food_id = db.Column(db.Integer, db.ForeignKey("food.id"), nullable=False)
+    food_id = db.Column(db.Integer, db.ForeignKey("foods.id"), nullable=False)
     quantity = db.Column(db.String(100), nullable=False)
 
     # relations
