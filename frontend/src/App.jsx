@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, Router } from 'react-router-dom';
 import './App.css';
 
 import TitleManager from './components/TitleManager';
@@ -31,11 +31,17 @@ import ShoppingListPage from './pages/shoppinglist/ShoppingListPage';
 //NOTFOUND
 import NotFound from './pages/NotFound';
 
+//WEATHER TIP
+import WeatherTipBanner from "./components/WeatherTipBanner";
+import weather from "./services/weather";
+
+
 function App() {
   return (
     <BrowserRouter>
       <TitleManager />
       <Navbar />
+      <WeatherTipBanner onRequestWeather={weather.getSuggestionByCoords} />
       <Routes>
         {/* HOME */}
         <Route path="home" element={<HomePage />} />
