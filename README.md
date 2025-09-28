@@ -130,6 +130,24 @@ A aplicação estará disponível em: [http://localhost:5173](http://localhost:5
 
 ---
 
+
+## Integração com Open-Meteo (Sugestão de comida pelo clima)
+
+O frontend agora conta com integração à API [Open-Meteo](https://open-meteo.com/) para sugerir pratos de acordo com a temperatura local. Veja o serviço em `frontend/src/services/weather.js`:
+
+- Busca a temperatura atual via coordenadas (latitude/longitude)
+- Gera uma sugestão de comida personalizada para o usuário
+- Em caso de erro de rede, exibe uma sugestão genérica
+
+
+## Ambiente de desenvolvimento com Dev Container
+
+Para facilitar o desenvolvimento no VS Code, o projeto inclui suporte a [Dev Containers](https://containers.dev/):
+
+- Arquivo `.devcontainer/devcontainer.json` já configurado para abrir o projeto no container Docker
+- Basta instalar a extensão "Remote - Containers" no VS Code e abrir o projeto usando "Reopen in Container"
+- O VS Code irá reconhecer automaticamente os pacotes Python do backend e Node do frontend
+
 ## Documentação Swagger
 
 A documentação da API está disponível em:
