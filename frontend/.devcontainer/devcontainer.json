@@ -1,0 +1,22 @@
+// https://containers.dev/implementors/json_reference/
+// https://code.visualstudio.com/docs/devcontainers/containers#_docker-compose
+{
+  "name": "NoTakeout Frontend",
+  "dockerComposeFile": [
+    "../../docker-compose.yml",
+    "../../docker-compose.override.yml"
+  ],
+  "service": "frontend",
+  "workspaceFolder": "/app",
+  "forwardPorts": [5173],
+  "shutdownAction": "none",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
+}
+

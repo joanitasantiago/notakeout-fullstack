@@ -7,6 +7,7 @@ backend/venv/
 
 # Python bytecode and caches
 backend/__pycache__/
+backend/*/__pycache__/
 backend/*.py[cod]
 backend/*.pyo
 backend/*.pyd
@@ -20,7 +21,6 @@ backend/instance/
 
 # Environment files
 backend/.env
-backend/.env.*
 
 # === Frontend - Node / React ===
 # Node dependencies and build output
@@ -30,7 +30,6 @@ frontend/build/
 
 # Local environment files
 frontend/.env
-frontend/.env.*
 
 # Caches and temporary files
 frontend/.cache/
