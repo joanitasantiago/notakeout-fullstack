@@ -1,9 +1,7 @@
 from database import db
 
 class Food(db.Model):
-
-    __tablename___ = "foods"
-    
+    __tablename__ = "foods"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     category = db.Column(db.String(50))

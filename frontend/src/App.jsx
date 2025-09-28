@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 
-import TitleManager from './components/titleManager';
+import TitleManager from './components/TitleManager';
 import Navbar from './components/Navbar';
 
 //HOMEPAGE
@@ -11,7 +11,7 @@ import HomePage from './pages/HomePage';
 import FoodsPage from './pages/foods/FoodsPage';
 import FoodsList from './pages/foods/FoodsList';
 import FoodsForm from './pages/foods/FoodsForm';
-import FoodsEditForm from './pages/Foods/FoodsEditForm';
+import FoodsEditForm from './pages/foods/FoodsEditForm';
 
 // RECIPES
 import RecipesPage from './pages/recipes/RecipesPage';

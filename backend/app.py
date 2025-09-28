@@ -21,7 +21,7 @@ def home():
     return "API de Gerenciamento de Refeições - MVP"
 if __name__ == "__main__":
     from models.food import Food
-    from models.recipe_food import  RecipeFood
+    from models.recipe_food import RecipeFood
     from models.recipe import Recipe
     from models.menu import Menu
     from models.menu_recipe import MenuRecipe
