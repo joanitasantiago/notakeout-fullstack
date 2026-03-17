@@ -1,10 +1,7 @@
 // Open-Meteo client + geração de sugestão de comida
 
 const weather = {
-  /**
-   * Assinatura compatível com o WeatherTipBanner:
-   * onRequestWeather({ latitude, longitude }) => Promise<{ tempC: number|null, tip: string }>
-   */
+
   async getSuggestionByCoords({ latitude, longitude }) {
     try {
       const url = new URL("https://api.open-meteo.com/v1/forecast");
