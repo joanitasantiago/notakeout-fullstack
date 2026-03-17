@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
 import "./WeatherTipBanner.css";
 
-/**
- * Componente que mostra uma sugestão de comida baseada no clima.
- *
- * Props:
- * - onRequestWeather: função ({ latitude, longitude }) => Promise<{ tempC, tip }>
- */
+
 export default function WeatherTipBanner({ onRequestWeather }) {
   const [status, setStatus] = useState("locating"); // locating | loading | ready | denied | error
   const [temperature, setTemperature] = useState(null);
