@@ -8,8 +8,12 @@ services:
       - FLASK_APP=app.py
       - FLASK_RUN_HOST=0.0.0.0
       - FLASK_ENV=development
+    env_file:
+      - ./backend/.env
     volumes:
       - ./backend:/app
+    depends_on:
+      - db
 
   frontend:
     build:

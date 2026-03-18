@@ -10,7 +10,7 @@ from routes.menu_routes import menu_bp
 
 app = Flask(__name__)
 CORS(app)
-database_url = os.getenv("DATABASE_URL", "sqlite:///notakeout.db")
+database_url = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_DATABASE_URI"] = database_url
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
