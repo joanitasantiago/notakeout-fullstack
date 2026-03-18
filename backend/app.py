@@ -1,3 +1,4 @@
+import os
 from flasgger import Swagger
 from flask import Flask
 from flask_cors import CORS
@@ -9,13 +10,15 @@ from routes.menu_routes import menu_bp
 
 app = Flask(__name__)
 CORS(app)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///notakeout.db"
+database_url = os.getenv("DATABASE_URL", "sqlite:///notakeout.db")
+app.config["SQLALCHEMY_DATABASE_URI"] = database_url
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 app.register_blueprint(food_bp)
 app.register_blueprint(recipe_bp)
 app.register_blueprint(menu_bp)
 swagger = Swagger(app)
+
 
 # Criação automática do banco ao iniciar o app (Flask >=2.3)
 from models.food import Food
