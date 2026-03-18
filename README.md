@@ -12,7 +12,7 @@ O sistema permite gerenciar alimentos, receitas, menus personalizados e gerar li
 - Python 3.11
 - Flask
 - Flask SQLAlchemy
-- SQLite
+- PostgreSQL
 - Flasgger (Swagger)
 - ReportLab (PDF)
 - UV (gerenciador de pacotes Python)
@@ -87,8 +87,8 @@ docker compose up --build
 - Front-end: [http://localhost:5173](http://localhost:5173) (modo desenvolvimento) ou [http://localhost:80](http://localhost:80) (produção)
 - Back-end (API): [http://localhost:5000](http://localhost:5000)
 
-> **Atenção:**  
-> Durante o desenvolvimento, o projeto utiliza `docker-compose.override.yml` para habilitar hot reload tanto no Flask quanto no React.  
+> **Atenção:**
+> Durante o desenvolvimento, o projeto utiliza `docker-compose.override.yml` para habilitar hot reload tanto no Flask quanto no React.
 > Lembre-se de configurar as variáveis de ambiente copiando `.env.example` para `.env` em cada serviço.
 
 ---
@@ -109,6 +109,8 @@ uv pip install -r requirements.txt
 cp .env.example .env
 python app.py
 ```
+> Antes de iniciar o backend sem Docker, garanta que o PostgreSQL está ativo e que `DATABASE_URL` aponta para a instância correta.
+
 A API estará disponível em: [http://localhost:5000](http://localhost:5000)
 
 ---
@@ -159,7 +161,7 @@ A documentação da API está disponível em:
 ## Em breve
 
 - **Frontend:** Menus, Lista de Compras, testes
-- **Backend:** Migração para PostgreSQL, testes
+- **Backend:** testes
 - **DevOps:** GitHub Actions com CI/CD
 
 ---
