@@ -36,6 +36,19 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
 
+  flyway:
+    image: redgate/flyway:latest
+    depends_on:
+      - db
+    volumes:
+      - ./database/migrations:/flyway/migrations
+    environment:
+      FLYWAY_URL: jdbc:postgresql://db:5432/notakeoutdb
+      FLYWAY_USER: notakeoutdb
+      FLYWAY_PASSWORD: notakeout2026
+      FLYWAY_LOCATIONS: filesystem:/flyway/migrations
+    command: info
+
 volumes:
   db_data:
     driver: local
