@@ -19,16 +19,6 @@ app.register_blueprint(recipe_bp)
 app.register_blueprint(menu_bp)
 swagger = Swagger(app)
 
-
-# Criação automática do banco ao iniciar o app (Flask >=2.3)
-from models.food import Food
-from models.recipe_food import RecipeFood
-from models.recipe import Recipe
-from models.menu import Menu
-from models.menu_recipe import MenuRecipe
-with app.app_context():
-    db.create_all()
-
 @app.route("/")
 def home():
     return "API de Gerenciamento de Refeições - MVP"
