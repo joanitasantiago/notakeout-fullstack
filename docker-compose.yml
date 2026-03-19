@@ -14,6 +14,7 @@ services:
       - ./backend:/app
     depends_on:
       - db
+      - flyway
 
   frontend:
     build:
@@ -47,7 +48,7 @@ services:
       FLYWAY_USER: notakeoutdb
       FLYWAY_PASSWORD: notakeout2026
       FLYWAY_LOCATIONS: filesystem:/flyway/migrations
-    command: info
+    command: migrate
 
 volumes:
   db_data:
